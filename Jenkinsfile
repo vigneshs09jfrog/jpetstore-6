@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'mvn clean install'
+        sh '''def mvnHome = tool name: \'maven\', type: \'maven\'
+sh "${mvnHome}/bin/mvn -B -DskipTests clean install"'''
       }
     }
 
